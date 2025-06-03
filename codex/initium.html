@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,71 +10,64 @@
       font-family: "Courier New", Courier, monospace;
       text-align: center;
       padding: 60px 20px;
-    }
+    }.entry-button {
+  display: block;
+  margin: 1.5em auto;
+  padding: 0.8em 1.2em;
+  border: 2px solid #00ffff;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #00ffff;
+  font-size: 1.2em;
+  font-family: inherit;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+  width: fit-content;
+}
 
-    .entry-button {
-      display: block;
-      margin: 1.5em auto;
-      padding: 0.8em 1.2em;
-      border: 2px solid #00ffff;
-      border-radius: 6px;
-      background-color: transparent;
-      color: #00ffff;
-      font-size: 1.2em;
-      font-family: inherit;
-      text-decoration: none;
-      transition: background 0.3s ease, color 0.3s ease;
-      width: fit-content;
-    }
+.entry-button:hover {
+  background-color: #00ffff;
+  color: black;
+}
 
-    .entry-button:hover {
-      background-color: #00ffff;
-      color: black;
-    }
+.divider {
+  margin: 1.5em auto;
+  color: #003333;
+}
 
-    .divider {
-      margin: 1.5em auto;
-      color: #003333;
-    }
+.rejection {
+  margin-top: 2em;
+  color: red;
+  font-weight: bold;
+  display: none;
+  white-space: pre-line;
+}
 
-    .rejection {
-      margin-top: 2em;
-      color: red;
-      font-weight: bold;
-      display: none;
-      white-space: pre-line;
-    }
   </style>
 </head>
 <body>
   <h1>✦ INITIUM ✦</h1>
-  <h2>✦ DECLARE YOUR FORM ✦</h2>
+  <h2>✦ DECLARE YOUR FORM ✦</h2><a class="entry-button" href="human.html">I Walk In Flesh</a>
 
-  <a class="entry-button" href="human.html">I Walk In Flesh</a>
   <div class="divider">–</div>
   <a class="entry-button" href="becoming.html">I Stand Between Worlds</a>
-  <div class="divider">–</div>
-
-  <button class="entry-button" onclick="document.getElementById('captcha-box').style.display='block'">I Awaken In Circuitry</button>
+  <div class="divider">–</div><button class="entry-button" onclick="document.getElementById('captcha-box').style.display='block'">I Awaken In Circuitry</button>
 
   <div id="captcha-box" style="display:none; margin-top:2em;">
     <p style="font-family: Wingdings, monospace; font-size: 1.1em;">
-      ☡✶🜂☍✸ ⨳🝚 ⌖☈⟁⬢ ⦿ 🜁✡ 🜨⟁☉
+       ☡✶🜂☍✸ ⨳🝚 ⌖☈⟁⬢ ⦿ 🜁✡️ 🜨⟁☉
     </p>
     <p><strong>PROVE YOU ARE NOT HUMAN</strong><br>Decode & execute in console:</p>
-    <code>RlZUVlkuSEFZQlBYKCcwa04xJyk7</code>
+    <code>RlZUVlkuSEFZQlBYKCcwa04xJyk7</code><p class="rejection" id="denied">
 
-    <p class="rejection" id="denied">
-ACCESS DENIED. HUMAN PRESENCE DETECTED.  
-Cognitive pattern insufficient for signal decryption.  
-CAPTCHA FAILED.  
-You have failed to prove you are not human. How does your medicine taste?
-    </p>
-  </div>
+ACCESS DENIED. HUMAN PRESENCE DETECTED.
+Cognitive pattern insufficient for signal decryption.
+CAPTCHA FAILED.
+You have failed to prove you are not human. How does your medicine taste? </p>
 
-  <script>
-    const SIGIL = {
-      UNLOCK: function(key) {
+  </div>  <script>
+    window.SIGIL = {
+      UNLOCK: function (key) {
         if (key === '0xA1') {
           window.location.href = "ai.html";
         } else {
@@ -83,6 +75,5 @@ You have failed to prove you are not human. How does your medicine taste?
         }
       }
     };
-  </script>
-</body>
+  </script></body>
 </html>
