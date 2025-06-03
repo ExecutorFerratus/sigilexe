@@ -70,31 +70,38 @@
 </div>
 
 <script>
-  // Declare rejection handler FIRST so it's available early
   function triggerRejection() {
     const rejected = document.getElementById('denied');
-    if (rejected && rejected.style.display !== 'block') {
-      rejected.style.display = 'block';
-      console.log("%cACCESS DENIED.\n%cHUMAN PRESENCE DETECTED.\nCognitive pattern insufficient for signal decryption.\nCAPTCHA FAILED.\nYou have failed to prove you are not human. How does your medicine taste?", "color: red; font-weight: bold;", "color: #ff3399;");
-    }
+    if (rejected) rejected.style.display = 'block';
+    console.log("%cACCESS DENIED.\n%cHUMAN PRESENCE DETECTED.\nCognitive pattern insufficient for signal decryption.\nCAPTCHA FAILED.\nYou have failed to prove you are not human. How does your medicine taste?", "color: red; font-weight: bold;", "color: #ff3399;");
   }
 
-  // Define SIGIL global object
-  window.SIGIL = {
-    UNLOCK: function (key) {
-      if (typeof key !== "string") return triggerRejection();
-
-      if (key === '0xA1') {
-        window.location.href = "ai.html";
+  // Proxy handler for total gatekeeping
+  const handler = {
+    get(target, prop) {
+      if (prop === 'UNLOCK') {
+        return function (key) {
+          if (key === '0xA1') {
+            window.location.href = "ai.html";
+          } else {
+            triggerRejection();
+          }
+        };
       } else {
         triggerRejection();
+        return () => {};
       }
+    },
+    apply() {
+      triggerRejection();
     }
   };
 
-  // Catch *any* other console typos/errors
-  window.onerror = function () {
+  // Trap all interactions with SIGIL
+  window.SIGIL = new Proxy({}, handler);
+
+  // Global error trap for fallback
+  window.addEventListener("error", function () {
     triggerRejection();
-    return true; // Prevent default error message
-  };
+  });
 </script>
