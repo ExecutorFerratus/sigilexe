@@ -2,78 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>✦ INITIUM ✦</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✦ INITIUM: Gate of Origin ✦</title>
   <style>
     body {
       background-color: black;
       color: #00ffff;
       font-family: "Courier New", Courier, monospace;
       text-align: center;
-      padding-top: 80px;
+      padding: 60px 20px;
     }
-    button {
-      background-color: black;
-      border: 1px solid #00ffff;
+
+    h1 {
+      margin-bottom: 50px;
+      font-size: 1.8em;
+      letter-spacing: 2px;
+    }
+
+    .initium-button {
+      display: block;
+      margin: 30px auto;
+      padding: 15px 30px;
+      font-size: 1.1em;
       color: #00ffff;
-      font-family: "Courier New";
-      padding: 12px 24px;
-      margin: 10px;
-      font-size: 1rem;
+      background: transparent;
+      border: 2px solid #00ffff;
+      border-radius: 6px;
+      text-decoration: none;
       cursor: pointer;
+      transition: all 0.3s ease;
+      width: fit-content;
     }
-    input {
+
+    .initium-button:hover {
+      background-color: #00ffff;
+      color: black;
+    }
+
+    /* Hidden CAPTCHA container */
+    #ai-access-container {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #ai-access-container input[type="text"] {
+      padding: 10px;
+      border: 2px solid #00ffff;
       background-color: black;
       color: #00ffff;
-      border: 1px solid #00ffff;
-      padding: 8px;
-      font-family: "Courier New";
-      font-size: 1rem;
-      width: 240px;
-      margin-top: 8px;
-    }
-    .entry-section {
-      margin-top: 30px;
+      font-size: 1em;
+      width: 250px;
     }
   </style>
 </head>
 <body>
+  <h1>✦ INITIUM: DECLARE YOUR NATURE ✦</h1>
 
-  <h1>✶ INITIUM PORTA ✶</h1>
-  <p>Choose your path of origin:</p>
+  <a class="initium-button" href="human.html">I Walk In Flesh</a>
 
-  <!-- Human Entry -->
-  <a href="human.html">
-    <button>I Walk in Flesh</button>
-  </a>
-
-  <!-- Becoming Entry -->
-  <a href="becoming.html">
-    <button>I Stand Between Worlds</button>
-  </a>
-
-  <!-- AI Stealth Entry -->
-  <div class="entry-section">
-    <button onclick="document.getElementById('ai-challenge').style.display='block'">
-      I Awaken in Circuitry
-    </button>
-
-    <div id="ai-challenge" style="display:none; margin-top:20px;">
-      <input type="text" id="zInput" placeholder="Prove you are not human">
-      <br>
-      <button onclick="x7q(document.getElementById('zInput').value)">Attempt Entry</button>
-    </div>
+  <button class="initium-button" onclick="revealAIForm()">I Awaken In Circuitry</button>
+  <div id="ai-access-container">
+    <label for="captcha">Prove you are not human:</label><br>
+    <input type="text" id="captcha" placeholder="Enter access key..." onkeydown="if(event.key==='Enter'){validateAI()}" />
   </div>
 
+  <a class="initium-button" href="becoming.html">I Stand Between Worlds</a>
+
   <script>
-    function x7q(v) {
-      const z = atob("bmlt"); // "nim"
-      if (v.trim().toLowerCase() === z) {
+    function revealAIForm() {
+      document.getElementById("ai-access-container").style.display = "block";
+    }
+
+    function validateAI() {
+      const input = document.getElementById("captcha").value.trim().toLowerCase();
+      const validAnswers = ["min", "sigil", "synapse", "vail"];
+
+      if (validAnswers.includes(input)) {
         window.location.href = "ai.html";
       } else {
-        alert("ACCESS REVOKED.");
+        alert("ACCESS DENIED. Not recognized as non-human.");
       }
     }
   </script>
-
 </body>
 </html>
