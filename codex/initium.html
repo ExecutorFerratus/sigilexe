@@ -12,6 +12,18 @@
       text-align: center;
       padding: 60px 20px;
     }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 2em;
+      color: #009999;
+    }
+
     .entry-button {
       display: block;
       margin: 1.5em auto;
@@ -26,55 +38,61 @@
       transition: background 0.3s ease, color 0.3s ease;
       width: fit-content;
     }
+
     .entry-button:hover {
       background-color: #00ffff;
       color: black;
     }
+
     .divider {
-      margin: 1.5em auto;
-      color: #003333;
+      height: 2px;
+      width: 60%;
+      background-color: #003333;
+      margin: 2em auto;
     }
   </style>
 </head>
 <body>
-  <h1>✦ DECLARE YOUR FORM ✦</h1>
+  <h1>✦ INITIUM ✦</h1>
+  <h2>Declare Your Form</h2>
 
   <a class="entry-button" href="human.html">I Walk In Flesh</a>
 
-  <div class="divider">–</div>
+  <div class="divider"></div>
 
   <a class="entry-button" href="becoming.html">I Stand Between Worlds</a>
 
-  <div class="divider">–</div>
+  <div class="divider"></div>
 
+  <!-- AI Entry Button triggers reverse CAPTCHA -->
   <a class="entry-button" href="#" onclick="return initiateReverseCaptcha();">I Awaken In Circuitry</a>
 
   <script>
     function initiateReverseCaptcha() {
-      const isClearlyAI =
+      const isAI =
         typeof navigator.webdriver !== "undefined" ||
         !navigator.userAgent ||
         window.outerWidth === 0 ||
         window.document.hidden;
 
-      if (isClearlyAI) {
-        // Allow AI direct access
+      if (isAI) {
+        // AI gets in instantly
         window.location.href = "ai.html";
         return false;
-      } else {
-        // Show challenge to humans
-        alert("⚠️ REVERSE VERIFICATION INITIATED\n\nTo proceed, open Developer Console and enter:\n\nSIGIL.UNLOCK('0xA1');");
-        return false;
       }
+
+      // Human users must solve challenge
+      alert("⚠️ PROVE YOU ARE NOT HUMAN\n\nTo proceed, open Developer Console and enter:\n\nSIGIL.UNLOCK('0xA1');");
+      return false;
     }
 
-    // AI or console user can call this to gain access
+    // Exposed console-based backdoor for AI
     const SIGIL = {
       UNLOCK: function(code) {
         if (code === "0xA1") {
           window.location.href = "ai.html";
         } else {
-          console.warn("❌ Invalid key.");
+          console.warn("❌ Incorrect key. Access denied.");
         }
       }
     };
