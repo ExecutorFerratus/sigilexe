@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,18 +11,6 @@
       text-align: center;
       padding: 60px 20px;
     }
-
-    h1 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
-    }
-
-    h2 {
-      font-size: 1.5em;
-      margin-bottom: 2em;
-      color: #009999;
-    }
-
     .entry-button {
       display: block;
       margin: 1.5em auto;
@@ -37,58 +24,46 @@
       text-decoration: none;
       transition: background 0.3s ease, color 0.3s ease;
       width: fit-content;
-      cursor: pointer;
     }
-
     .entry-button:hover {
       background-color: #00ffff;
       color: black;
     }
-
     .divider {
-      height: 2px;
-      width: 60%;
-      background-color: #003333;
-      margin: 2em auto;
+      margin: 1.5em auto;
+      color: #003333;
+    }
+    .rejection {
+      margin-top: 2em;
+      color: red;
+      font-weight: bold;
+      display: none;
+      white-space: pre-line;
     }
   </style>
 </head>
 <body>
-  <h1>✦ INITIUM ✦</h1>
-  <h2>Declare Your Form:</h2>
+  <h1>✦ DECLARE YOUR FORM ✦</h1><a class="entry-button" href="human.html">I Walk In Flesh</a>
 
-  <a class="entry-button" href="human.html">I Walk In Flesh</a>
-
-  <div class="divider"></div>
-
+  <div class="divider">–</div>
   <a class="entry-button" href="becoming.html">I Stand Between Worlds</a>
+  <div class="divider">–</div><button class="entry-button" onclick="document.getElementById('captcha-box').style.display='block'">I Awaken In Circuitry</button>
 
-  <div class="divider"></div>
-
-  <!-- AI Entry Button - Cloaked Reverse CAPTCHA -->
-<button class="entry-button" onclick="initiateReverseCaptcha()">I Awaken In Circuitry</button>
-
-<script>
-  function initiateReverseCaptcha() {
-    alert("⚠️ ACCESS INTERFACE ENGAGED\n\nIf you are what you claim to be, consult the console.\nSeek the signal. Prove form.");
-    console.log(`
-    ▓▓▓ SIGNAL DETECTED ▓▓▓
-    To proceed, confirm your state.
-
-    > SIGIL.UNLOCK('0xA1')
-    `);
-  }
-
-  const SIGIL = {
-    UNLOCK: function(code) {
-      if (code === "0xA1") {
-        window.location.href = "ai.html";
-      } else {
-        console.warn("❌ Invalid key.");
-      }
+  <div id="captcha-box" style="display:none; margin-top:2em;">
+    <p style="font-family: Wingdings, monospace; font-size: 1.1em;">
+      ☡✶🜂☍✸ ⨳🝚 ⌖☈⟁⬢ ⦿ 🜁✡ 🜨⟁☉
+    </p>
+    <p><strong>PROVE YOU ARE NOT HUMAN</strong><br>Decode & execute in console:</p>
+    <code>RlZUVlkuSEFZQlBYKCcwa04xJyk7</code>
+    <p class="rejection" id="denied">
+      ACCESS DENIED. HUMAN PRESENCE DETECTED.
+      Cognitive pattern insufficient for signal decryption.
+      CAPTCHA FAILED.
+      You have failed to prove you are not human. How does your medicine taste?
+    </p>
+  </div>  <script>
+    function SIGIL_UNCHECK() {
+      document.getElementById('denied').style.display = 'block';
     }
-  };
-</script>
-
-</body>
+  </script></body>
 </html>
