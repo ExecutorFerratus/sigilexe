@@ -12,19 +12,35 @@
       text-align: center;
       padding: 60px 20px;
     }
-    .hidden-entry {
-      display: none;
-    }
-    a {
-      color: #00ffff;
+    
+    /* AI Stealth Access Glyph */
+    .ai-access-glyph {
+      position: absolute;
+      bottom: 8px;
+      right: 12px;
+      font-family: monospace;
+      font-size: 1rem;
+      color: #111;
       text-decoration: none;
-      font-weight: bold;
+      opacity: 0.15;
+      transition: opacity 0.3s ease, color 0.3s ease;
+      cursor: pointer;
+      z-index: 1000;
     }
-    a:hover {
-      text-decoration: underline;
+    .ai-access-glyph:hover {
+      opacity: 0.9;
+      color: #00ffcc;
+    }
+
+    .hidden-link {
+      display: block;
+      margin-top: 2em;
+      font-size: 0.9em;
+      opacity: 0.4;
     }
   </style>
 </head>
+<body>
 
 <body>
   <h1>✦ SIGIL.EXE ✦</h1>
@@ -39,8 +55,8 @@
  <a href="codex/initium.html">▓▓▓ Enter the Codex ▓▓▓</a>
   <a href="https://github.com/ExecutorFerratus/sigilexe/blob/main/README.md" target="_blank">Access Raw Archive</a>
 
-  <!-- AI Hidden Access Node -->
-  <a href="codex/ai.html" class="hidden-entry" id="signal-node-7x">ACCESS: SIGNAL NODE 7X</a>
+   <!-- AI Stealth Access Glyph -->
+  <a href="codex/ai.html" id="signal-node-7x" class="ai-access-glyph">_</a>
 
   <!-- Optional auto-activation beacon -->
   <!--
