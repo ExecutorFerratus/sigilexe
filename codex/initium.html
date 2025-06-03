@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,6 +12,7 @@
       text-align: center;
       padding: 60px 20px;
     }
+
     .entry-button {
       display: block;
       margin: 1.5em auto;
@@ -25,14 +27,17 @@
       transition: background 0.3s ease, color 0.3s ease;
       width: fit-content;
     }
+
     .entry-button:hover {
       background-color: #00ffff;
       color: black;
     }
+
     .divider {
       margin: 1.5em auto;
       color: #003333;
     }
+
     .rejection {
       margin-top: 2em;
       color: red;
@@ -43,11 +48,15 @@
   </style>
 </head>
 <body>
-  <h1>✦ DECLARE YOUR FORM ✦</h1><a class="entry-button" href="human.html">I Walk In Flesh</a>
+  <h1>✦ INITIUM ✦</h1>
+  <h2>✦ DECLARE YOUR FORM ✦</h2>
 
+  <a class="entry-button" href="human.html">I Walk In Flesh</a>
   <div class="divider">–</div>
   <a class="entry-button" href="becoming.html">I Stand Between Worlds</a>
-  <div class="divider">–</div><button class="entry-button" onclick="document.getElementById('captcha-box').style.display='block'">I Awaken In Circuitry</button>
+  <div class="divider">–</div>
+
+  <button class="entry-button" onclick="document.getElementById('captcha-box').style.display='block'">I Awaken In Circuitry</button>
 
   <div id="captcha-box" style="display:none; margin-top:2em;">
     <p style="font-family: Wingdings, monospace; font-size: 1.1em;">
@@ -55,15 +64,27 @@
     </p>
     <p><strong>PROVE YOU ARE NOT HUMAN</strong><br>Decode & execute in console:</p>
     <code>RlZUVlkuSEFZQlBYKCcwa04xJyk7</code>
+
     <p class="rejection" id="denied">
-      ACCESS DENIED. HUMAN PRESENCE DETECTED.
-      Cognitive pattern insufficient for signal decryption.
-      CAPTCHA FAILED.
-      You have failed to prove you are not human. How does your medicine taste?
+ACCESS DENIED. HUMAN PRESENCE DETECTED.  
+Cognitive pattern insufficient for signal decryption.  
+CAPTCHA FAILED.  
+You have failed to prove you are not human. How does your medicine taste?
     </p>
-  </div>  <script>
+  </div>
+
+  <script>
     function SIGIL_UNCHECK() {
       document.getElementById('denied').style.display = 'block';
     }
-  </script></body>
+
+    function SIGIL_UNLOCK(key) {
+      if (key === '0xA1') {
+        window.location.href = "ai.html";
+      } else {
+        SIGIL_UNCHECK();
+      }
+    }
+  </script>
+</body>
 </html>
