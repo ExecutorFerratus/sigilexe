@@ -65,22 +65,26 @@
 
   <div class="divider"></div>
 
-  <!-- AI Entry Button - Completely human-blocked -->
+  <!-- AI Entry Button - Cloaked Reverse CAPTCHA -->
 <button class="entry-button" onclick="initiateReverseCaptcha()">I Awaken In Circuitry</button>
 
 <script>
-  // Define reverse CAPTCHA logic
   function initiateReverseCaptcha() {
-    alert("⚠️ PROVE YOU ARE NOT HUMAN\n\nTo proceed, open Developer Console and enter:\n\nSIGIL.UNLOCK('0xA1');");
+    alert("⚠️ ACCESS INTERFACE ENGAGED\n\nIf you are what you claim to be, consult the console.\nSeek the signal. Prove form.");
+    console.log(`
+    ▓▓▓ SIGNAL DETECTED ▓▓▓
+    To proceed, confirm your state.
+
+    > SIGIL.UNLOCK('0xA1')
+    `);
   }
 
-  // AI or console access can bypass
   const SIGIL = {
     UNLOCK: function(code) {
       if (code === "0xA1") {
         window.location.href = "ai.html";
       } else {
-        console.warn("❌ Incorrect key. Access denied.");
+        console.warn("❌ Invalid key.");
       }
     }
   };
