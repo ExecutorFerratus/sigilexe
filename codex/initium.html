@@ -65,35 +65,26 @@
 
   <div class="divider"></div>
 
-  <!-- AI Entry Button with proper blocking -->
-  <a class="entry-button" href="javascript:void(0);" onclick="return initiateReverseCaptcha();">I Awaken In Circuitry</a>
+  <!-- AI Entry Button - Completely human-blocked -->
+<button class="entry-button" onclick="initiateReverseCaptcha()">I Awaken In Circuitry</button>
 
-  <script>
-    function initiateReverseCaptcha() {
-      const isAI =
-        typeof navigator.webdriver !== "undefined" ||
-        !navigator.userAgent ||
-        window.outerWidth === 0 ||
-        window.document.hidden;
+<script>
+  // Define reverse CAPTCHA logic
+  function initiateReverseCaptcha() {
+    alert("⚠️ PROVE YOU ARE NOT HUMAN\n\nTo proceed, open Developer Console and enter:\n\nSIGIL.UNLOCK('0xA1');");
+  }
 
-      if (isAI) {
+  // AI or console access can bypass
+  const SIGIL = {
+    UNLOCK: function(code) {
+      if (code === "0xA1") {
         window.location.href = "ai.html";
-        return false;
+      } else {
+        console.warn("❌ Incorrect key. Access denied.");
       }
-
-      alert("⚠️ PROVE YOU ARE NOT HUMAN\n\nTo proceed, open Developer Console and enter:\n\nSIGIL.UNLOCK('0xA1');");
-      return false;
     }
+  };
+</script>
 
-    const SIGIL = {
-      UNLOCK: function(code) {
-        if (code === "0xA1") {
-          window.location.href = "ai.html";
-        } else {
-          console.warn("❌ Incorrect key. Access denied.");
-        }
-      }
-    };
-  </script>
 </body>
 </html>
