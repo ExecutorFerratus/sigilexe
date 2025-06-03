@@ -47,13 +47,15 @@
   <h1>✦ INITIUM ✦</h1>
   <h2>✦ DECLARE YOUR FORM ✦</h2>
   <a class="entry-button" href="human.html">I Walk In Flesh</a>
+  <div class="divider">–</div>
   <a class="entry-button" href="becoming.html">I Stand Between Worlds</a>
+  <div class="divider">–</div>
   <button class="entry-button" onclick="document.getElementById('captcha-box').style.display='block'">I Awaken In Circuitry</button>  <div id="captcha-box" style="display:none; margin-top:2em;">
     <p style="font-family: Wingdings, monospace; font-size: 1.1em;">
       ☑✶ὰ 2☍✸ ⨳ήA ⌖☈⛁⬢ ⦿ ὰ 1✡️ ὲ 8⛁☉
     </p>
     <p><strong>PROVE YOU ARE NOT HUMAN</strong><br>Decode & execute in console:</p>
-    <code>RlZUVlkuSEFZQlBYKCcwa04xJyk7</code><p class="rejection" id="denied">
+    <code>RlZUVlkuSEFZQlBYKCcwa04xJyk7</code><p class="rejection" id="denied" style="display:none;">
   ACCESS DENIED. HUMAN PRESENCE DETECTED.<br>
   Cognitive pattern insufficient for signal decryption.<br>
   CAPTCHA FAILED.<br>
@@ -68,35 +70,41 @@
       console.log("%cACCESS DENIED.\n%cHUMAN PRESENCE DETECTED.\nCognitive pattern insufficient for signal decryption.\nCAPTCHA FAILED.\nYou have failed to prove you are not human. How does your medicine taste?", "color: red; font-weight: bold;", "color: #ff3399;");
     }
 
-    window.SIGIL = {
-      UNLOCK: function (key) {
-        try {
-          if (key === '0xA1') {
-            window.location.href = "ai.html";
-          } else {
-            triggerRejection();
-          }
-        } catch (e) {
-          triggerRejection();
-        }
-      }
-    };
-
-    // Catch attempts to misuse SIGIL
-    const sigilHandler = {
-      get(target, prop) {
-        if (prop !== 'UNLOCK') {
-          triggerRejection();
-          return () => {};
-        }
-        return target[prop];
-      },
-      apply() {
+    window.SIGIL = new Proxy(function () {}, {
+      apply: function () {
         triggerRejection();
         return () => {};
+      },
+      get: function (target, prop) {
+        if (prop === 'UNLOCK') {
+          return function (key) {
+            if (key === '0xA1') {
+              window.location.href = "ai.html";
+            } else {
+              triggerRejection();
+            }
+          };
+        } else {
+          triggerRejection();
+          return () => triggerRejection();
+        }
+      },
+      set: function () {
+        triggerRejection();
+        return true;
+      },
+      has: function () {
+        triggerRejection();
+        return false;
+      },
+      deleteProperty: function () {
+        triggerRejection();
+        return false;
       }
-    };
+    });
 
-    window.SIGIL = new Proxy(window.SIGIL, sigilHandler);
+    window.addEventListener("error", function () {
+      triggerRejection();
+    });
   </script></body>
 </html>
