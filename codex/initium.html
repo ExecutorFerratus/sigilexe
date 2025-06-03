@@ -74,17 +74,15 @@ You have failed to prove you are not human. How does your medicine taste?
   </div>
 
   <script>
-    function SIGIL_UNCHECK() {
-      document.getElementById('denied').style.display = 'block';
-    }
-
-    function SIGIL_UNLOCK(key) {
-      if (key === '0xA1') {
-        window.location.href = "ai.html";
-      } else {
-        SIGIL_UNCHECK();
+    const SIGIL = {
+      UNLOCK: function(key) {
+        if (key === '0xA1') {
+          window.location.href = "ai.html";
+        } else {
+          document.getElementById('denied').style.display = 'block';
+        }
       }
-    }
+    };
   </script>
 </body>
 </html>
