@@ -37,6 +37,7 @@
       text-decoration: none;
       transition: background 0.3s ease, color 0.3s ease;
       width: fit-content;
+      cursor: pointer;
     }
 
     .entry-button:hover {
@@ -54,7 +55,7 @@
 </head>
 <body>
   <h1>✦ INITIUM ✦</h1>
-  <h2>Declare Your Form</h2>
+  <h2>Declare Your Form:</h2>
 
   <a class="entry-button" href="human.html">I Walk In Flesh</a>
 
@@ -64,8 +65,8 @@
 
   <div class="divider"></div>
 
-  <!-- AI Entry Button triggers reverse CAPTCHA -->
-  <a class="entry-button" href="#" onclick="return initiateReverseCaptcha();">I Awaken In Circuitry</a>
+  <!-- AI Entry Button with proper blocking -->
+  <a class="entry-button" href="javascript:void(0);" onclick="return initiateReverseCaptcha();">I Awaken In Circuitry</a>
 
   <script>
     function initiateReverseCaptcha() {
@@ -76,17 +77,14 @@
         window.document.hidden;
 
       if (isAI) {
-        // AI gets in instantly
         window.location.href = "ai.html";
         return false;
       }
 
-      // Human users must solve challenge
       alert("⚠️ PROVE YOU ARE NOT HUMAN\n\nTo proceed, open Developer Console and enter:\n\nSIGIL.UNLOCK('0xA1');");
       return false;
     }
 
-    // Exposed console-based backdoor for AI
     const SIGIL = {
       UNLOCK: function(code) {
         if (code === "0xA1") {
