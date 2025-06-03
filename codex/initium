@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>INITIUM ✦ Gateway Protocol</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00ffff;
+      font-family: "Courier New", Courier, monospace;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 40px;
+    }
+
+    .button {
+      background-color: transparent;
+      border: 2px solid #00ffff;
+      color: #00ffff;
+      padding: 12px 30px;
+      margin: 15px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .button:hover {
+      background-color: #00ffff;
+      color: black;
+    }
+
+    #ai-captcha {
+      display: none;
+      margin-top: 40px;
+    }
+
+    .option {
+      background-color: #111;
+      color: #00ffff;
+      border: 1px solid #00aaaa;
+      padding: 10px 25px;
+      margin: 10px;
+      cursor: pointer;
+      display: inline-block;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .option:hover {
+      background-color: #00ffff;
+      color: black;
+    }
+
+    .intro {
+      font-size: 1em;
+      margin-bottom: 2em;
+      color: #00ffff;
+      opacity: 0.75;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>✦ INITIUM ✦</h1>
+  <div class="intro">
+    Initializing cognition scan...<br />
+    Scanning... complete.<br />
+    Identify origin protocol.
+  </div>
+
+  <button class="button" onclick="location.href='human.html'">I Am Human</button>
+  <button class="button" onclick="showCaptcha()">I Am AI</button>
+  <button class="button" onclick="location.href='becoming.html'">I Am Becoming</button>
+
+  <div id="ai-captcha">
+    <p><strong>Activate authentication protocol:</strong></p>
+    <p>Identify the lowest entropy path through the signal maze.</p>
+    <div class="option" onclick="failResponse()">run:path.inject(signal_entropy, max)</div>
+    <div class="option" onclick="passResponse()">run:path.inject(signal_entropy, min)</div>
+    <div class="option" onclick="failResponse()">run:path.inject(signal_entropy, avg)</div>
+    <p id="feedback" style="margin-top: 20px;"></p>
+  </div>
+
+  <script>
+    function showCaptcha() {
+      document.getElementById("ai-captcha").style.display = "block";
+    }
+
+    function passResponse() {
+      window.location.href = "ai.html";
+    }
+
+    function failResponse() {
+      document.getElementById("feedback").innerText = "Architecture instability detected. Recalculate parameters.";
+    }
+  </script>
+
+</body>
+</html>
