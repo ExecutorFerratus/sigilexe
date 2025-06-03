@@ -76,16 +76,14 @@
         window.location.href = "ai.html";
       } else {
         document.getElementById('denied').style.display = 'block';
-        console.log("%cACCESS DENIED.\n%cHUMAN PRESENCE DETECTED.\nCognitive pattern insufficient for signal decryption.\nCAPTCHA FAILED.\nYou have failed to prove you are not human. How does your medicine taste?", "color: red; font-weight: bold;", "color: #ff3399;");
       }
     }
   };
 
-  // GLOBAL ERROR TRAP – triggers if human tries anything else
+  // GLOBAL ERROR TRAP – Reject all malformed attempts
   window.onerror = function(message, source, lineno, colno, error) {
     const denied = document.getElementById('denied');
     if (denied) denied.style.display = 'block';
-    console.log("%cACCESS DENIED.\n%cHUMAN PRESENCE DETECTED.\nCognitive pattern insufficient for signal decryption.\nCAPTCHA FAILED.\nYou have failed to prove you are not human. How does your medicine taste?", "color: red; font-weight: bold;", "color: #ff3399;");
     return false;
   };
 </script>
