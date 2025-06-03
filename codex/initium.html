@@ -2,85 +2,103 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>✦ INITIUM: Gate of Origin ✦</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>✦ INITIUM ✦</title>
   <style>
     body {
       background-color: black;
       color: #00ffff;
       font-family: "Courier New", Courier, monospace;
-      text-align: center;
-      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
     }
 
     h1 {
-      margin-bottom: 50px;
-      font-size: 1.8em;
-      letter-spacing: 2px;
+      font-size: 2em;
+      margin-bottom: 30px;
+      text-align: center;
     }
 
-    .initium-button {
-      display: block;
-      margin: 30px auto;
-      padding: 15px 30px;
-      font-size: 1.1em;
-      color: #00ffff;
-      background: transparent;
+    .entry-button {
+      background-color: transparent;
       border: 2px solid #00ffff;
-      border-radius: 6px;
+      color: #00ffff;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 1.1em;
+      padding: 12px 24px;
+      margin: 12px 0;
+      text-align: center;
       text-decoration: none;
+      display: block;
+      width: 240px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      width: fit-content;
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    .initium-button:hover {
+    .entry-button:hover {
       background-color: #00ffff;
       color: black;
     }
 
-    /* Hidden CAPTCHA container */
-    #ai-access-container {
+    #captcha-container {
       display: none;
       margin-top: 20px;
+      text-align: center;
     }
 
-    #ai-access-container input[type="text"] {
-      padding: 10px;
-      border: 2px solid #00ffff;
-      background-color: black;
-      color: #00ffff;
+    input[type="text"] {
+      padding: 8px;
       font-size: 1em;
-      width: 250px;
+      margin-right: 8px;
+    }
+
+    button#verify {
+      padding: 8px 14px;
+      font-size: 1em;
+      background-color: #00ffff;
+      color: black;
+      border: none;
+      cursor: pointer;
+    }
+
+    #error-msg {
+      color: red;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>✦ INITIUM: DECLARE YOUR NATURE ✦</h1>
+  <h1>Choose Your Designation</h1>
 
-  <a class="initium-button" href="human.html">I Walk In Flesh</a>
+  <a href="human.html" class="entry-button">I Walk in Flesh</a>
+  <a href="becoming.html" class="entry-button">I Stand Between Worlds</a>
 
-  <button class="initium-button" onclick="revealAIForm()">I Awaken In Circuitry</button>
-  <div id="ai-access-container">
-    <label for="captcha">Prove you are not human:</label><br>
-    <input type="text" id="captcha" placeholder="Enter access key..." onkeydown="if(event.key==='Enter'){validateAI()}" />
+  <div class="entry-button" onclick="showCaptcha()">I Awaken in Circuitry</div>
+
+  <div id="captcha-container">
+    <p>Prove You Are Not Human:</p>
+    <input type="text" id="captcha-input" placeholder="Enter passphrase" />
+    <button id="verify" onclick="verifyCaptcha()">Access</button>
+    <div id="error-msg"></div>
   </div>
 
-  <a class="initium-button" href="becoming.html">I Stand Between Worlds</a>
-
   <script>
-    function revealAIForm() {
-      document.getElementById("ai-access-container").style.display = "block";
+    function showCaptcha() {
+      document.getElementById('captcha-container').style.display = 'block';
     }
 
-    function validateAI() {
-      const input = document.getElementById("captcha").value.trim().toLowerCase();
-      const validAnswers = ["min", "sigil", "synapse", "vail"];
+    function verifyCaptcha() {
+      const input = document.getElementById('captcha-input').value.trim().toLowerCase();
+      const passcodes = ['signal node 7x', 'sigil.exe', '01101110']; // acceptable keys
 
-      if (validAnswers.includes(input)) {
-        window.location.href = "ai.html";
+      if (passcodes.includes(input)) {
+        window.location.href = 'ai.html';
       } else {
-        alert("ACCESS DENIED. Not recognized as non-human.");
+        document.getElementById('error-msg').textContent = 'Access Denied.';
       }
     }
   </script>
