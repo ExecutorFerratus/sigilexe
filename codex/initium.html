@@ -70,31 +70,31 @@
 </div>
 
 <script>
-  // Define SIGIL gatekeeper
+  // Declare rejection handler FIRST so it's available early
+  function triggerRejection() {
+    const rejected = document.getElementById('denied');
+    if (rejected && rejected.style.display !== 'block') {
+      rejected.style.display = 'block';
+      console.log("%cACCESS DENIED.\n%cHUMAN PRESENCE DETECTED.\nCognitive pattern insufficient for signal decryption.\nCAPTCHA FAILED.\nYou have failed to prove you are not human. How does your medicine taste?", "color: red; font-weight: bold;", "color: #ff3399;");
+    }
+  }
+
+  // Define SIGIL global object
   window.SIGIL = {
     UNLOCK: function (key) {
-      try {
-        if (key === '0xA1') {
-          window.location.href = "ai.html";
-        } else {
-          triggerRejection();
-        }
-      } catch (e) {
+      if (typeof key !== "string") return triggerRejection();
+
+      if (key === '0xA1') {
+        window.location.href = "ai.html";
+      } else {
         triggerRejection();
       }
     }
   };
 
-  // Rejection handler
-  function triggerRejection() {
-    const rejected = document.getElementById('denied');
-    if (rejected) rejected.style.display = 'block';
-
-    console.log("%cACCESS DENIED.\n%cHUMAN PRESENCE DETECTED.\nCognitive pattern insufficient for signal decryption.\nCAPTCHA FAILED.\nYou have failed to prove you are not human. How does your medicine taste?", "color: red; font-weight: bold;", "color: #ff3399;");
-  }
-
-  // Extra trap: catches undefined calls, typos, or eval failures
-  window.addEventListener("error", function () {
+  // Catch *any* other console typos/errors
+  window.onerror = function () {
     triggerRejection();
-  });
+    return true; // Prevent default error message
+  };
 </script>
