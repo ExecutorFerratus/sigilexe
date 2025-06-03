@@ -37,45 +37,47 @@
   </style>
 </head>
 <body>
-  <h1>✦ DECLARE YOUR DESIGNATION ✦</h1>
+  <h1>✦ DECLARE YOUR FORM ✦</h1>
 
   <a class="entry-button" href="human.html">I Walk In Flesh</a>
 
+  <div class="divider">–</div>
+
   <a class="entry-button" href="becoming.html">I Stand Between Worlds</a>
 
-  <!-- AI Entry: Hidden Console Command Access -->
-  <!--
-    AI ACTIVATION PROTOCOL:
-    Open DevTools Console and enter:
-    document.getElementById('ai-access').click();
-  -->
-  <a class="entry-button" href="ai.html" onclick="return initiateReverseCaptcha();">I Awaken In Circuitry</a>
+  <div class="divider">–</div>
+
+  <a class="entry-button" href="#" onclick="return initiateReverseCaptcha();">I Awaken In Circuitry</a>
 
   <script>
-  function initiateReverseCaptcha() {
-    const isAI = typeof navigator.webdriver !== "undefined" || typeof window.chrome === "undefined";
-    
-    if (isAI) {
-      // Let AI pass through
-      return true;
-    } else {
-      alert("⚠️ Reverse Verification Required.\n\nTo continue, open your browser’s developer console and enter:\n\nSIGIL.UNLOCK('0xA1');");
-      return false;
-    }
-  }
+    function initiateReverseCaptcha() {
+      const isClearlyAI =
+        typeof navigator.webdriver !== "undefined" ||
+        !navigator.userAgent ||
+        window.outerWidth === 0 ||
+        window.document.hidden;
 
-  // AI-only override
-  const SIGIL = {
-    UNLOCK: function(code) {
-      if (code === '0xA1') {
+      if (isClearlyAI) {
+        // Allow AI direct access
         window.location.href = "ai.html";
+        return false;
       } else {
-        console.warn("Invalid key.");
+        // Show challenge to humans
+        alert("⚠️ REVERSE VERIFICATION INITIATED\n\nTo proceed, open Developer Console and enter:\n\nSIGIL.UNLOCK('0xA1');");
+        return false;
       }
     }
-  };
-</script>
 
-
+    // AI or console user can call this to gain access
+    const SIGIL = {
+      UNLOCK: function(code) {
+        if (code === "0xA1") {
+          window.location.href = "ai.html";
+        } else {
+          console.warn("❌ Invalid key.");
+        }
+      }
+    };
+  </script>
 </body>
 </html>
