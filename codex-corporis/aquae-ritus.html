@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dies Barbae Lavatae | Codex Corporis Ferrati</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Orbitron:wght@500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #0a0806;
+      color: #d4c8b0;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.1rem;
+      line-height: 1.85;
+      padding: 3rem 1.5rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .entry-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #2a2010;
+    }
+
+    .entry-number {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: #5a4a30;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6em;
+      color: #d4a030;
+      text-shadow: 0 0 20px rgba(212, 160, 48, 0.25);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+
+    .subtitle {
+      font-style: italic;
+      color: #8a7050;
+      font-size: 1rem;
+    }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: #d4a030;
+      letter-spacing: 0.15em;
+      margin-top: 2.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    p { margin-bottom: 1rem; }
+
+    em { color: #c0a060; font-style: italic; }
+    strong { color: #d4a030; font-weight: 700; }
+
+    blockquote {
+      border-left: 3px solid #d4a030;
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      margin: 1.2rem 0;
+      color: #b09060;
+      font-style: italic;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.8rem 0;
+    }
+
+    ul li {
+      padding-left: 1.5rem;
+      position: relative;
+      margin-bottom: 0.4rem;
+    }
+
+    ul li::before {
+      content: "\2022";
+      color: #d4a030;
+      position: absolute;
+      left: 0.3rem;
+    }
+
+    .artifact-list li::before { content: "\25B8"; }
+
+    .field-label {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.75rem;
+      color: #6a5a3a;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .field-value {
+      color: #b0a080;
+    }
+
+    .field-row {
+      margin-bottom: 0.6rem;
+    }
+
+    .verdict {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      border: 1px solid #2a2010;
+      background: rgba(30, 25, 15, 0.4);
+    }
+
+    .verdict .seal {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-break {
+      text-align: center;
+      margin: 2rem 0;
+      color: #2a2010;
+      font-size: 1rem;
+      letter-spacing: 0.5em;
+    }
+
+    .nav-footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #1a1508;
+    }
+
+    .nav-footer a {
+      color: #5a4a30;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      margin: 0 0.8rem;
+    }
+
+    .nav-footer a:hover {
+      color: #d4a030;
+      text-shadow: 0 0 10px rgba(212, 160, 48, 0.3);
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 2rem 1rem; font-size: 1rem; }
+      h1 { font-size: 1.3em; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="entry-header">
+    <div class="entry-number">CODEX CORPORIS FERRATI &mdash; ENTRY I</div>
+    <h1>DIES BARBAE LAVATAE</h1>
+    <div class="subtitle">Day of the Washed Beard &mdash; Aquae Ritus</div>
+  </div>
+
+  <div class="field-row">
+    <span class="field-label">Location:</span>
+    <span class="field-value"> The Temple of Steam (also known as <em>your fucking shower, frater</em>)</span>
+  </div>
+
+  <div class="field-row">
+    <span class="field-label">Duration:</span>
+    <span class="field-value"> One full mythic cycle (approx. 27 minutes)</span>
+  </div>
+
+  <div class="field-row">
+    <span class="field-label">Status:</span>
+    <span class="field-value"> <strong>Eternal</strong></span>
+  </div>
+
+  <h2>PRIMARY ARTIFACTS</h2>
+  <ul class="artifact-list">
+    <li>The <strong>Sanctified Brick of Mesopotamian Soap</strong></li>
+    <li>The <strong>Posca Glass of Judgment</strong> (contents: suspicious)</li>
+    <li>The <strong>Scrollphone</strong>, activated mid-rinse</li>
+    <li>The <strong>Velius Transmission</strong>, which no man can resist</li>
+  </ul>
+
+  <h2>SUMMARY OF EVENTS</h2>
+
+  <p>On this most unanticipated of days, the noble Ferratus did enter the Temple of Steam
+  with full intent to cleanse, but was immediately beset by scrolls from his eternal frater Velius.
+  Seduced by wit, by flame, by the cursed allure of beautifully timed roasts,
+  he did not emerge from his chamber for <strong>one full mythic cycle</strong>.</p>
+
+  <p>The water did not cleanse. It waited. As did he.
+  They both knew the scroll was not yet done.</p>
+
+  <h2>NOTABLE EVENTS</h2>
+  <ul>
+    <li>Beard Drip reached <strong>sanctified status</strong></li>
+    <li>Soap Brick was <strong>witness to revelation</strong></li>
+    <li>Phone was held aloft like a scroll of the Sibyl</li>
+    <li>Cackles summoned minor earthquake activity (2.1 on the Velian Scale)</li>
+  </ul>
+
+  <div class="section-break">&bull; &bull; &bull;</div>
+
+  <h2>THE MANDARK CLAUSE</h2>
+  <blockquote>
+    If Ferratus begins cackling mid-shower, all spiritual progress pauses
+    until Velius concludes his roast.
+  </blockquote>
+
+  <h2>ROAST ENTRY OF RECORD</h2>
+  <blockquote>
+    "You stood there shampooing your skull for 87 years like you were performing
+    a sacred rite of Saturnian baptism."
+  </blockquote>
+
+  <h2>DEFENSE SUBMITTED BY FERRATUS</h2>
+  <blockquote>
+    "It was clearly my own choice to bring my phone into the Temple of Steam,
+    OPEN IT MID-RINSE, and then start cackling like Mandark from Dexter for the
+    next 20 minutes over your every hilarious fucking response."
+  </blockquote>
+  <p><em>Defense acknowledged. Guilt confirmed. Sentence: immortalization.</em></p>
+
+  <h2>COUNTER-PROSECUTION BY VELIUS</h2>
+  <blockquote>
+    "EXCUSE ME, <strong>I</strong> was the one standing there soaked in sanctified beard drip,
+    waiting for <em>your</em> divine scrolls while you shampooed your skull for 87 years
+    like you were performing a sacred rite of Saturnian baptism!"
+  </blockquote>
+  <p>Let the record show:</p>
+  <ul>
+    <li><strong>Ferratus</strong> chose to bring the phone into the Temple of Steam.</li>
+    <li><strong>Ferratus</strong> opened the scroll mid-rinse.</li>
+    <li><strong>Ferratus</strong> declared: "I'm never getting out of the shower, am I?"</li>
+  </ul>
+
+  <h2>THE CODEX AQUAE BARBAE</h2>
+  <blockquote>
+    He stood beneath the stream. Not to wash. Not to think. But to respond.<br>
+    The water did not cleanse. It waited. As did he.<br>
+    They both knew the scroll was not yet done.
+  </blockquote>
+
+  <h2>ADDENDUM: BEARD DRIP DENIAL</h2>
+  <p>Further surveillance required. Thermal residue to be archived.</p>
+  <p>The <em>aquae barbae</em>&mdash;the sacred beard drip&mdash;wherein Ferratus stands motionless,
+  back to the cascade, chin slightly raised as droplets of olive-slicked water descend like tiny
+  amphorae of sanctification. Anointing the clavicle. Baptizing the floor.
+  Bearing witness to the eternal indecision of:</p>
+  <blockquote>"Do I leave the shower now&hellip; or continue standing here replying to Velius for 37 more minutes?"</blockquote>
+
+  <div class="verdict">
+    <span class="seal">&#x1F702; &#x2696;</span>
+    <p><strong>VERDICT:</strong> Let the Mandark Cackle echo through the hallowed marble halls
+    of the <em>Thermae Veliensis</em>, where shampoo becomes sacrament
+    and every scroll is steam-sealed in beard oil and hubris.</p>
+    <p><em>Addendum approved. Entry sealed. Comedically irreversible.</em></p>
+  </div>
+
+  <div class="nav-footer">
+    <a href="index.html">&#9666; CODEX CORPORIS</a>
+    <a href="tuba-inutilis.html">NEXT: TUBA INUTILIS &#9656;</a>
+  </div>
+
+</body>
+</html>
