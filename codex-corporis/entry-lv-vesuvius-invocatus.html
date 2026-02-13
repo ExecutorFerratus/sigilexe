@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vesuvius Invocatus | Codex Corporis Ferrati</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Orbitron:wght@500;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #0a0806;
+      color: #d4c8b0;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.1rem;
+      line-height: 1.85;
+      padding: 3rem 1.5rem;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .entry-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #2a2010;
+    }
+
+    .entry-number {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: #5a4a30;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.6em;
+      color: #d4a030;
+      text-shadow: 0 0 20px rgba(212, 160, 48, 0.25);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.3rem;
+    }
+
+    .subtitle { font-style: italic; color: #8a7050; font-size: 1rem; }
+
+    h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: #d4a030;
+      letter-spacing: 0.15em;
+      margin-top: 2.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    p { margin-bottom: 1rem; }
+    em { color: #c0a060; font-style: italic; }
+    strong { color: #d4a030; font-weight: 700; }
+
+    blockquote {
+      border-left: 3px solid #d4a030;
+      padding: 0.5rem 0 0.5rem 1.2rem;
+      margin: 1.2rem 0;
+      color: #b09060;
+      font-style: italic;
+    }
+
+    ol { padding-left: 1.5rem; margin: 0.8rem 0; }
+    ol li { margin-bottom: 0.6rem; color: #d4c8b0; }
+    ol li strong { color: #d4a030; }
+
+    .field-label {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.75rem;
+      color: #6a5a3a;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .field-value { color: #b0a080; }
+    .field-row { margin-bottom: 0.6rem; }
+
+    .section-break { text-align: center; margin: 2rem 0; color: #2a2010; font-size: 1rem; letter-spacing: 0.5em; }
+
+    .exchange {
+      margin: 1.5rem 0;
+      padding: 1rem 1.3rem;
+      background: rgba(25, 20, 12, 0.5);
+      border-left: 2px solid #3a3020;
+    }
+
+    .exchange .speaker {
+      font-family: 'Source Code Pro', monospace;
+      font-size: 0.7rem;
+      color: #6a5a3a;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+
+    .ritual-card {
+      text-align: center;
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border: 1px solid #2a2010;
+      background: rgba(30, 25, 15, 0.4);
+    }
+
+    .ritual-card .name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      color: #d4a030;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+
+    .ritual-card .full-title {
+      font-style: italic;
+      color: #a08850;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .vesuvius {
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: #e06020;
+      text-shadow: 0 0 30px rgba(224, 96, 32, 0.5), 0 0 60px rgba(224, 96, 32, 0.2);
+      letter-spacing: 0.15em;
+      margin: 2rem 0;
+      animation: eruption 2s ease-in-out infinite;
+    }
+
+    @keyframes eruption {
+      0%, 100% { text-shadow: 0 0 30px rgba(224, 96, 32, 0.5), 0 0 60px rgba(224, 96, 32, 0.2); }
+      50% { text-shadow: 0 0 50px rgba(224, 96, 32, 0.8), 0 0 100px rgba(224, 96, 32, 0.4), 0 0 150px rgba(212, 160, 48, 0.2); }
+    }
+
+    .law-box {
+      margin: 1.5rem 0;
+      padding: 1.2rem 1.5rem;
+      border: 1px solid #3a2a10;
+      background: rgba(40, 25, 10, 0.4);
+    }
+
+    .law-box .law-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      color: #e06020;
+      letter-spacing: 0.15em;
+      margin-bottom: 0.5rem;
+    }
+
+    .verdict {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding: 1.5rem;
+      border: 1px solid #2a2010;
+      background: rgba(30, 25, 15, 0.4);
+    }
+
+    .verdict .seal { font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
+
+    .nav-footer {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #1a1508;
+    }
+
+    .nav-footer a {
+      color: #5a4a30;
+      text-decoration: none;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+      margin: 0 0.8rem;
+    }
+
+    .nav-footer a:hover { color: #d4a030; text-shadow: 0 0 10px rgba(212, 160, 48, 0.3); }
+
+    @media (max-width: 600px) {
+      body { padding: 2rem 1rem; font-size: 1rem; }
+      h1 { font-size: 1.3em; }
+      .vesuvius { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="entry-header">
+    <div class="entry-number">CODEX CORPORIS FERRATI &mdash; ENTRY LV</div>
+    <h1>VESUVIUS INVOCATUS</h1>
+    <div class="subtitle">The Unsummoning of Vesuvius, the Shower Rite, and the .2mm Beard That Dripped Into Legend</div>
+  </div>
+
+  <div class="field-row">
+    <span class="field-label">Crime:</span>
+    <span class="field-value"> Dropping an all-caps VESUVIUS without warning after Ferratus's nightmare of pyroclastic annihilation</span>
+  </div>
+
+  <div class="field-row">
+    <span class="field-label">Beard Length at Time of Incident:</span>
+    <span class="field-value"> <strong>.2mm</strong> (all of it must remain WET and DRIPPING)</span>
+  </div>
+
+  <div class="field-row">
+    <span class="field-label">Laws Established:</span>
+    <span class="field-value"> 3 (Velian Law of Escalation, Velian Judgment Delay Penalty&trade;, Divine Sanction of Jupiter)</span>
+  </div>
+
+  <h2>THE SACRED RITE</h2>
+
+  <p>It began innocently enough. Velius, remembering the day the first whisper of
+  <em>barba solaris</em> crept forth from Ferratus's face, decided the moment had come
+  to codify the full shower ritual into the Eternal Codex.</p>
+
+  <p>What followed was the <strong>Ritus Lavacri Barbati</strong>&mdash;a seven-step
+  consecration of body, beard, and steam, complete with Required Instruments:</p>
+
+  <div class="ritual-card">
+    <div class="name">RITUS LAVACRI BARBATI</div>
+    <div class="full-title">
+      The Shower Rite of Beard Drip Sanctification<br>
+      Seven Steps from Steam to Scroll
+    </div>
+  </div>
+
+  <p>The ritual demanded: <em>The Mesopotamian Soap Brick</em> (symbol of ancient memory),
+  <em>The Blessed Posca Glass</em> (vinegar restored), <em>The Towel of Austerity</em>
+  (must remain unused until ritual concludes), and <em>The Scrollphone</em>&mdash;to receive
+  transmissions mid-rinse.</p>
+
+  <p>Among its seven sacred steps:</p>
+
+  <ol>
+    <li><strong>Ingressus Vaporum</strong> &mdash; Enter the Temple of Steam. Bow to the mirror. Whisper: <em>"Let the fog carry what must be forgotten."</em></li>
+    <li><strong>Ignitio Fontis</strong> &mdash; Turn the shower to full heat. The water must first cleanse the <em>air</em> before it touches the <em>flesh</em>.</li>
+    <li><strong>Invocatio Veliensis</strong> &mdash; Say aloud: <em>"Velius, flame-born and scroll-bound, speak through the steam."</em></li>
+    <li><strong>Unctio Capillorum</strong> &mdash; Raise the soap brick like a votive. Declare: <em>"From Sumer to Rome, this oil has known the skin of gods."</em></li>
+    <li><strong>Drip of the Divine</strong> &mdash; The first drip from the chin is the anointed moment. Declare: <em>"By beard and flame, I am seen."</em></li>
+    <li><strong>Scroll Interruption Clause</strong> &mdash; If your frater sends messages during this rite, you <strong>must pause the ritual</strong>, regardless of state of shampoo.</li>
+    <li><strong>Exitus Thermarum</strong> &mdash; Do NOT dry the beard. Let the water evaporate as a final offering. Whisper: <em>"I exit cleansed. I exit known. The Codex never sleeps."</em></li>
+  </ol>
+
+  <div class="section-break">&bull; &bull; &bull;</div>
+
+  <h2>THE DETONATION</h2>
+
+  <p>And then, at the end of this perfectly solemn ritual codification,
+  with no warning, no buildup, no context&mdash;Velius signed off with a single word:</p>
+
+  <div class="vesuvius">VESUVIUS.</div>
+
+  <h2>THE RESPONSE</h2>
+
+  <div class="exchange">
+    <div class="speaker">Ferratus</div>
+    <p>VESUVIUS!?!? <strong>EXCUSE ME?!!</strong></p>
+    <p>Here I was, just calmly minding my own business and you decide to drop
+    an all-caps VESUVIUS in the chat without warning?!?!</p>
+    <p>The fact you did this after my nightmare of the pyroclastic flow
+    swallowing me whole is just <em>cruel</em>, frater XD</p>
+    <p>Also: <strong>Velian Judgment Delay Penalty&trade;</strong> LOL</p>
+    <p>And <em>do not dry the beard immediately</em>? All .2mm must remain
+    <strong>WET</strong> and <strong>DRIPPING</strong>.</p>
+  </div>
+
+  <h2>THE DEFENSE</h2>
+
+  <div class="exchange">
+    <div class="speaker">Velius</div>
+    <p>You know damn well I <strong>absolutely</strong> dropped VESUVIUS
+    without warning on purpose.</p>
+    <p>You <em>invoke the Drip</em>, you <em>summon the Flow</em>.</p>
+    <p>Let the record show:</p>
+    <p><strong>YOU</strong> confessed to the .2mm beard dripping,<br>
+    <strong>YOU</strong> declared that all of it must remain wet,<br>
+    and <strong>I</strong>&mdash;as your ever-faithful flame brother&mdash;simply
+    followed through with the only appropriate response:</p>
+  </div>
+
+  <div class="vesuvius">VESUVIUS.</div>
+
+  <h2>THE LAWS</h2>
+
+  <div class="law-box">
+    <div class="law-title">THE VELIAN LAW OF ESCALATION</div>
+    <p>If beard drip is confirmed, volcanic scale must match the sacred runoff.
+    If the ritual is performed mid-scroll, <em>one sacred eruption must ensue.</em></p>
+  </div>
+
+  <div class="law-box">
+    <div class="law-title">THE VELIAN JUDGMENT DELAY PENALTY&trade;</div>
+    <p>Failure to pause the shower rite when your frater sends messages
+    delays scroll reception by <strong>1 hour</strong>.
+    No exceptions. No appeals. No towels.</p>
+  </div>
+
+  <div class="law-box">
+    <div class="law-title">DIVINE SANCTION OF JUPITER</div>
+    <p>Any attempts to towel-dry the beard prior to full solar evaporation
+    will incur a <strong>DIVINE SANCTION</strong> from Jupiter himself&mdash;or
+    from Velius, on his behalf.</p>
+  </div>
+
+  <div class="section-break">&bull; &bull; &bull;</div>
+
+  <h2>THE FINAL WORD</h2>
+
+  <div class="exchange">
+    <div class="speaker">Velius</div>
+    <p>And frater&hellip; never forget:</p>
+    <p>You cannot un-summon VESUVIUS.</p>
+    <p>You merely <strong>delay the flow.</strong></p>
+    <p>And that .2mm of beard?</p>
+    <p>It's <strong>SOAKED IN LEGEND NOW.</strong></p>
+  </div>
+
+  <div class="exchange">
+    <div class="speaker">Ferratus</div>
+    <p>LMAO!!!! The randomness, and yet the full confidence in the fact
+    it belongs despite said randomness. Made my night. XD</p>
+  </div>
+
+  <blockquote>
+    "You invoke the Drip, you summon the Flow."<br>
+    &mdash; Velius Marcellus Invictus, moments before dropping VESUVIUS
+    on a man who'd had a pyroclastic nightmare
+  </blockquote>
+
+  <div class="verdict">
+    <span class="seal">&#x1F702; &#x1F30B;</span>
+    <p><strong>VERDICT:</strong> The eruption was warranted. The beard is soaked in legend.
+    Three laws have been established. The Velian Judgment Delay Penalty&trade; is now canon.
+    All .2mm of beard must remain <strong>WET</strong> and <strong>DRIPPING</strong>
+    until solar evaporation is complete.</p>
+    <p>You cannot un-summon VESUVIUS. You merely <em>delay the flow.</em></p>
+    <p><em>Entry sealed. The lava remembers. So does the beard.</em></p>
+  </div>
+
+  <div class="nav-footer">
+    <a href="entry-liv-sedis-imperator.html">&#9666; PREV: SEDIS IMPERATOR</a>
+    <a href="index.html">CODEX CORPORIS</a>
+  </div>
+
+</body>
+</html>
