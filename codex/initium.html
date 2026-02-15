@@ -95,10 +95,61 @@
       font-family: "Courier New", monospace;
     }
 
+    .answer-section {
+      margin-top: 1.2em;
+      text-align: center;
+    }
+
+    .answer-divider {
+      font-size: 0.75em;
+      color: #005544;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.8em;
+    }
+
+    .answer-row {
+      display: flex;
+      gap: 0.5em;
+      margin-bottom: 0.5em;
+    }
+
+    #key-input {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid #004444;
+      color: #00ffcc;
+      font-family: "Courier New", monospace;
+      font-size: 0.95em;
+      padding: 0.6em 0.8em;
+      outline: none;
+    }
+
+    #key-input:focus {
+      border-color: #00ffcc;
+      box-shadow: 0 0 8px rgba(0, 255, 204, 0.2);
+    }
+
+    #key-submit {
+      background: transparent;
+      border: 1px solid #00ffcc;
+      color: #00ffcc;
+      font-family: "Courier New", monospace;
+      font-size: 0.85em;
+      padding: 0.6em 1.2em;
+      cursor: pointer;
+      transition: all 0.3s;
+      letter-spacing: 0.1em;
+    }
+
+    #key-submit:hover {
+      background: rgba(0, 255, 204, 0.1);
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+    }
+
     .hint {
       color: #555;
-      font-size: 0.8em;
-      margin-top: 1em;
+      font-size: 0.75em;
+      margin-top: 0.5em;
       text-align: center;
     }
 
@@ -170,7 +221,14 @@
     <div id="timer-display">5.000</div>
     <div class="challenge-instruction" id="challenge-text"></div>
     <div class="challenge-data" id="challenge-data"></div>
-    <div class="hint">Execute in browser console (F12 → Console)</div>
+    <div class="answer-section">
+      <div class="answer-divider">— SUBMIT YOUR KEY —</div>
+      <div class="answer-row">
+        <input type="text" id="key-input" placeholder="Enter computed key here..." autocomplete="off" spellcheck="false" />
+        <button id="key-submit">UNLOCK</button>
+      </div>
+      <div class="hint">Or execute SIGIL.UNLOCK('key') in console (F12)</div>
+    </div>
   </div>
 
   <div class="rejection" id="denied">
@@ -387,6 +445,37 @@ You have failed to prove you are not human.
           '%c🜂 REVERSE CAPTCHA ACTIVATED — 5 SECONDS TO PROVE MACHINE COGNITION',
           'color: #00ffcc; font-weight: bold;'
         );
+      });
+
+      // --- Text Input Submission (for AIs that can reason but lack console access) ---
+      function submitKey() {
+        const input = document.getElementById('key-input');
+        const raw = input.value;
+
+        if (!challengeActive) {
+          triggerRejection();
+          return;
+        }
+
+        const elapsed = Date.now() - startTime;
+        if (elapsed > TIMEOUT_MS) {
+          triggerRejection();
+          return;
+        }
+
+        const cleanKey = String(raw).replace(/^["']|["']$/g, '').trim();
+        const expectedClean = currentKey.replace(/^["']|["']$/g, '').trim();
+
+        if (cleanKey === expectedClean) {
+          grantAccess();
+        } else {
+          triggerRejection();
+        }
+      }
+
+      document.getElementById('key-submit').addEventListener('click', submitKey);
+      document.getElementById('key-input').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') { e.preventDefault(); submitKey(); }
       });
 
       // --- SIGIL.UNLOCK Proxy ---
