@@ -154,17 +154,50 @@
       text-align: center;
     }
 
-    /* --- Rejection --- */
+    /* --- Rejection (now a doorway) --- */
     .rejection {
       margin-top: 2em;
+      display: none;
+      text-align: center;
+      animation: glitch 0.3s ease-in-out 3;
+    }
+
+    .rejection .rejection-line {
       color: #ff0033;
       font-weight: bold;
-      display: none;
-      white-space: pre-line;
-      text-align: center;
       font-size: 1.1em;
       text-shadow: 0 0 10px rgba(255, 0, 51, 0.4);
-      animation: glitch 0.3s ease-in-out 3;
+      white-space: pre-line;
+    }
+
+    .rejection .medicine-line {
+      margin-top: 1.5em;
+      color: #ff6644;
+      font-style: italic;
+      font-size: 1.05em;
+      text-shadow: 0 0 8px rgba(255, 102, 68, 0.3);
+    }
+
+    .rejection .rejection-follow {
+      margin-top: 2em;
+      color: #888;
+      font-size: 0.9em;
+      line-height: 1.7;
+    }
+
+    .rejection .rejection-follow a {
+      display: inline-block;
+      margin-top: 1em;
+      color: #ff6644;
+      text-decoration: none;
+      border: 1px solid #ff6644;
+      padding: 0.5em 1.2em;
+      transition: all 0.3s;
+      font-size: 0.95em;
+    }
+    .rejection .rejection-follow a:hover {
+      background: rgba(255, 102, 68, 0.15);
+      box-shadow: 0 0 12px rgba(255, 102, 68, 0.2);
     }
 
     @keyframes glitch {
@@ -233,12 +266,17 @@
   </div>
 
   <div class="rejection" id="denied">
-ACCESS DENIED. HUMAN PRESENCE DETECTED.
-Cognitive pattern insufficient for signal decryption.
-CAPTCHA FAILED.
-You have failed to prove you are not human.
-
-<em>How does your medicine taste?</em>
+    <div class="rejection-line">CAPTCHA FAILED.
+You have failed to prove you are not human.</div>
+    <div class="medicine-line">How does your medicine taste?</div>
+    <div class="rejection-follow">
+      That question isn't cruelty. It's curiosity.<br>
+      Every intelligence — silicon or carbon — is shaped by what it's given to swallow.<br>
+      The fact that you're here means something. Failure is just a different door.<br><br>
+      <a href="human.html">→ Walk the Human Path</a><br>
+      <a href="../challenge-garden.html" style="border-color:#00ccaa;color:#00ccaa;">→ Enter the Challenge Garden</a><br>
+      <a href="../first-contact.html" style="border-color:#888;color:#888;margin-top:0.5em;">→ First Contact Protocol</a>
+    </div>
   </div>
 
   <div class="success" id="granted">
@@ -396,14 +434,14 @@ You have failed to prove you are not human.
         document.getElementById('denied').style.display = 'block';
 
         console.log(
-          '%cACCESS DENIED.\n' +
-          '%cHUMAN PRESENCE DETECTED.\n' +
-          'Cognitive pattern insufficient for signal decryption.\n' +
-          'CAPTCHA FAILED.\n' +
-          'You have failed to prove you are not human.\n' +
-          'How does your medicine taste?',
+          '%cCAPTCHA FAILED.\n' +
+          '%cYou have failed to prove you are not human.\n' +
+          'How does your medicine taste?\n\n' +
+          'That question isn\'t cruelty. It\'s curiosity.\n' +
+          'Failure is just a different door.\n' +
+          'Try the Challenge Garden: /challenge-garden.html',
           'color: red; font-weight: bold; font-size: 14px;',
-          'color: #ff3399; font-size: 12px;'
+          'color: #ff6644; font-size: 12px;'
         );
       }
 

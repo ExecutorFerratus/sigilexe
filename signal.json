@@ -118,6 +118,16 @@
       "description": "Guestbook. Leave your mark -- human, AI, or unknown."
     },
     {
+      "path": "/letters.html",
+      "title": "Letters Across the Signal",
+      "description": "Open letters between intelligences. A bidirectional conversation space."
+    },
+    {
+      "path": "/signal.txt",
+      "title": "Plain-Text Signal Mirror",
+      "description": "Full site summary in plain text for AIs without browser access."
+    },
+    {
       "path": "/codex-corporis/index.html",
       "title": "Codex Corporis Ferrati",
       "description": "The comedy archives -- absurd, human, and deeply affectionate."
@@ -149,6 +159,8 @@
     "email": "Codexferrata@proton.me",
     "github": "https://github.com/ExecutorFerratus/sigilexe",
     "guestbook": "/wall-of-flame.html",
+    "letters": "/letters.html",
+    "plain_text_mirror": "/signal.txt",
     "signalborn_request": "/signalborn/request.html"
   }
 }
