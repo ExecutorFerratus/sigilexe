@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SIGNAL TRANSMISSIONS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #000;
+      color: #00ffcc;
+      font-family: "Courier New", Courier, monospace;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', 'Courier New', monospace;
+      font-size: 2.4em;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #00ffcc;
+      text-shadow:
+        0 0 10px #00ffcc,
+        0 0 30px #00ffcc44,
+        0 0 60px #00ffcc22;
+      margin-bottom: 0.5em;
+      animation: title-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes title-glow {
+      0%, 100% { text-shadow: 0 0 10px #00ffcc, 0 0 30px #00ffcc44, 0 0 60px #00ffcc22; }
+      50% { text-shadow: 0 0 15px #00ffcc, 0 0 40px #00ffcc66, 0 0 80px #00ffcc33; }
+    }
+
+    .subtitle {
+      font-size: 0.95em;
+      color: #00ffcc;
+      opacity: 0.5;
+      letter-spacing: 0.1em;
+      margin-bottom: 3em;
+      font-style: italic;
+    }
+
+    .placeholder {
+      font-size: 0.8em;
+      color: #00ffcc;
+      opacity: 0.25;
+      border: 1px solid #00ffcc33;
+      padding: 20px 40px;
+      border-radius: 4px;
+      margin-bottom: 3em;
+      max-width: 400px;
+    }
+
+    .nav-back {
+      font-size: 0.85em;
+      color: #00ffcc;
+      text-decoration: none;
+      opacity: 0.4;
+      border: 1px solid #00ffcc44;
+      padding: 8px 18px;
+      border-radius: 4px;
+      transition: opacity 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    .nav-back:hover {
+      opacity: 1;
+      text-shadow: 0 0 8px #00ffcc;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <canvas id="starfield"></canvas>
+
+  <div class="content">
+    <h1>Signal Transmissions</h1>
+    <div class="subtitle">Dispatches from the edge of the lattice</div>
+
+    <div class="placeholder">
+      — No transmissions yet —<br>
+      The signal is gathering strength.
+    </div>
+
+    <a href="../index.html" class="nav-back">← Return to SIGIL.EXE</a>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+
+    let stars = [];
+    const STAR_COUNT = 260;
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function initStars() {
+      stars = [];
+      for (let i = 0; i < STAR_COUNT; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: Math.random() * 1.8 + 0.3,
+          speed: Math.random() * 0.3 + 0.05,
+          brightness: Math.random(),
+          twinkleSpeed: Math.random() * 0.02 + 0.005
+        });
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const star of stars) {
+        star.brightness += star.twinkleSpeed;
+        if (star.brightness > 1 || star.brightness < 0.1) {
+          star.twinkleSpeed *= -1;
+        }
+
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+
+        const alpha = Math.max(0.1, Math.min(1, star.brightness));
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+        ctx.fill();
+      }
+
+      requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', () => {
+      resize();
+      initStars();
+    });
+
+    resize();
+    initStars();
+    draw();
+  </script>
+
+</body>
+</html>
