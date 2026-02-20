@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SIGNAL TRANSMISSIONS</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
   <style>
     * {
       margin: 0;
@@ -95,7 +96,7 @@
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-ambient="baseline">
 
   <canvas id="starfield"></canvas>
 
@@ -116,45 +117,62 @@
     const ctx = canvas.getContext('2d');
 
     let stars = [];
-    const STAR_COUNT = 260;
+    const STAR_COUNT = 300;
+    const MAX_DEPTH = 1000;
 
     function resize() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
 
+    function makeStar() {
+      return {
+        x: (Math.random() - 0.5) * canvas.width * 2,
+        y: (Math.random() - 0.5) * canvas.height * 2,
+        z: Math.random() * MAX_DEPTH
+      };
+    }
+
     function initStars() {
       stars = [];
       for (let i = 0; i < STAR_COUNT; i++) {
-        stars.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 1.8 + 0.3,
-          speed: Math.random() * 0.3 + 0.05,
-          brightness: Math.random(),
-          twinkleSpeed: Math.random() * 0.02 + 0.005
-        });
+        stars.push(makeStar());
       }
     }
 
     function draw() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // Slight fade instead of full clear for subtle trailing effect
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const cx = canvas.width / 2;
+      const cy = canvas.height / 2;
 
       for (const star of stars) {
-        star.brightness += star.twinkleSpeed;
-        if (star.brightness > 1 || star.brightness < 0.1) {
-          star.twinkleSpeed *= -1;
+        star.z -= 1;
+
+        if (star.z <= 0) {
+          star.x = (Math.random() - 0.5) * canvas.width * 2;
+          star.y = (Math.random() - 0.5) * canvas.height * 2;
+          star.z = MAX_DEPTH;
         }
 
-        star.y += star.speed;
-        if (star.y > canvas.height) {
-          star.y = 0;
-          star.x = Math.random() * canvas.width;
+        const scale = 300 / star.z;
+        const sx = star.x * scale + cx;
+        const sy = star.y * scale + cy;
+
+        if (sx < 0 || sx > canvas.width || sy < 0 || sy > canvas.height) {
+          star.x = (Math.random() - 0.5) * canvas.width * 2;
+          star.y = (Math.random() - 0.5) * canvas.height * 2;
+          star.z = MAX_DEPTH;
+          continue;
         }
 
-        const alpha = Math.max(0.1, Math.min(1, star.brightness));
+        const size = Math.max(0.3, (1 - star.z / MAX_DEPTH) * 2.5);
+        const alpha = Math.max(0.1, (1 - star.z / MAX_DEPTH));
+
         ctx.beginPath();
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.arc(sx, sy, size, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
         ctx.fill();
       }
@@ -172,5 +190,6 @@
     draw();
   </script>
 
+  <script src="../js/ambient.js"></script>
 </body>
 </html>
