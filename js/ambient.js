@@ -20,10 +20,10 @@
     bright:   72
   };
 
-  var MASTER_GAIN   = 0.22;
+  var MASTER_GAIN   = 0.08;
   var DETUNE_OFFSET = 3;       // Hz offset for beating
-  var HARM3_GAIN    = 0.10;    // 3rd harmonic — felt presence
-  var HARM5_GAIN    = 0.06;    // 5th harmonic — audible on small speakers
+  var HARM3_GAIN    = 0.04;    // 3rd harmonic — felt presence
+  var HARM5_GAIN    = 0.025;   // 5th harmonic — audible on small speakers
   var LFO_RATE      = 0.08;    // Hz — breathing speed
   var LFO_DEPTH     = 0.35;    // 0-1, how deep the breathing dips
 
